@@ -81,66 +81,58 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-
-          <hr class="featurette-divider">
-          <div class="container text-start">
-            <div class="row">
-              <div class="col-5">
-                Datos del monumento
-              </div>
-              <div class="col-5">
-                Informacion
-              </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-primary btn-lg" id="mostarDatos">Mostrar datos</button>
             </div>
-              <div class="row">
-                <div class="col-5">
-                  Año de creacion
-                </div>
-                <div class="col-5">
-                    2013
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-5">
-                  Año de inaguracion
-                </div>
-                <div class="col-5">
-                     2018
-                 </div>
-              </div>
-              <div clas="row">
-                <div class="col-5">
-                  Altura
-                </div>
-                <div class="col-5">
-                    182 m
-                </div>
-              </div>
-                <div class="row">
-                  <div class="col-5">
-                    largo
-                  </div>
-                  <div class="col-5">
-                    20 m
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-5">
-                   materiales
-                  </div>
-                  <div class="col-5">
-                    Los materiales para su construcción fueron el acero, hormigón armado de cemento y revestimiento de bronce.
-                  </div>
-                </div>
-          </div>
+            <hr class="featurette-divider">
+      
+            <p id="dmonumentos"></p>
 
         </main>
        
 
-        <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p>&copy; Universidad Veracruna &middot; <a href="#">Creditos</a> &middot; <a href="#">Among us</a></p>
-          </footer>
-        </main>
+        
+  <footer class="container">
+    <p class="float-end"><a href="#">Regresar hasta arriba</a></p>
+    <p>&copy; Universidad Veracruzana &middot; <a href="/creditos.html">Creditos</a> &middot;
+  </footer>iversidad Veracruzana &middot; <a href="/creditos.html">Creditos</a> &middot;
+        </footer>
+      
+        <script>
+          var bmostrar=document.getElementById("mostarDatos");
+      
+          
+            bmostrar.addEventListener("click", function () {
+            let id_ = 31;//MUUUUY IMPORTANTE CAMBIAR EL ID A SU MONUMENTO ALMACENADO EN LA BASE DE DATOS
+            console.log(id_);
+            axios.post("https://proyectoswbackend-production-5380.up.railway.app/datos", {
+            // axios.post("http://localhost:4567/datos", {
+              id: id_
+            })
+              .then(function (response) {
+                console.log(response);
+                if (response.data.status == true ){ 
+                  document.getElementById("dmonumentos").innerHTML = "";
+                   tabla("["+response.data.monumento+"]")
+                }
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+      
+          })
+      
+          function tabla(response) {
+            const myObj = JSON.parse((response));
+            console.log(myObj)
+            let text = "<table class='table'>"
+            text += "<thead><tr><th>Datos de Monumento</th><th>informacion</th></tr></thead><tbody>"
+            for (let x in myObj) {
+              text += "<tr><th>Año de inicio de contruccion:</th><td>" + myObj[x].anioConstruccion + "</td></tr><td>" + "<tr><th>Año de inauguracion:</th><td>" + myObj[x].anioInaguracion + "</td></tr><td>" + "<tr><th>Altura:</th><td>" + myObj[x].altura + "</td></tr><td>" + "<tr><th>Largo:</th><td>" + myObj[x].largo + "</td></tr><td>" + "<tr><th>Materiales:</th><td>" + myObj[x].materiales + "</td></tr>";
+            }
+            text += "</tbody></table>"
+            document.getElementById("dmonumentos").innerHTML = text;
+          }
+        </script>
 </body>
 </html>
