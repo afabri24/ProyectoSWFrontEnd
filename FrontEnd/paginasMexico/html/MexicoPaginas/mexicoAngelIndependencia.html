@@ -64,100 +64,17 @@
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
           aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-
         <div class="carousel-item active">
           <img src="https://www.cooperatingvolunteers.com/wp-content/uploads/2016/04/mexico-353589_1920.jpg"
-            class="d-block w-100" alt="...">
+            class="d-block w-100" alt="Aqui se muestra el angel de la independecia">
           <div class="carousel-caption d-none d-md-block">
-            <h1>México</h1>
-            <p>Vea los monumentos mas importantes de México</p>
           </div>
         </div>
-
-        <div class="carousel-item">
-          <img src="https://blog-francia.com/wp-content/uploads/2022/09/La-Torre-Eiffel.jpg" class="d-block w-100"
-            alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>Francia</h1>
-            <p>Vea los monumentos mas importantes de Francia</p>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://www.enroma.com/wp-content/uploads/2021/07/Coliseo-Romano.jpg" class="d-block w-100"
-            alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>Italia</h1>
-            <p>Vea los monumentos mas importantes de Italia</p>
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-      <button type="button" class="btn btn-primary" id="mostarDatos">Mostrar datos</button>
-      <hr class="featurette-divider">
-      <div class="container text-start">
-        <div class="row">
-          <div class="col-5">
-            <b>Datos del monumento</b>
-          </div>
-          <div class="col-5">
-            <b>Informacion</b>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5">
-            Año de creacion
-          </div>
-          <div class="col-5">
-            oculto
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5">
-            Año de inaguracion
-          </div>
-          <div class="col-5">
-            oculto
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5">
-            Altura
-          </div>
-          <div class="col-5">
-            oculto
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-5">
-            Largo
-          </div>
-          <div class="col-5">
-            oculto
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-5">
-            Materiales
-          </div>
-          <div class="col-5">
-            oculto
-          </div>
-        </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+      <button type="button" class="btn btn-primary btn-lg" id="mostarDatos">Mostrar datos</button>
       </div>
       <hr class="featurette-divider">
 
@@ -178,8 +95,8 @@
       bmostrar.addEventListener("click", function () {
       let id_ = 1;
       console.log(id_);
-      // axios.post("https://proyectoswbackend-production.up.railway.app/datos", {
-      axios.post("http://localhost:4567/datos", {
+      axios.post("https://proyectoswbackend-production-5380.up.railway.app/", {
+      // axios.post("http://localhost:4567/datos", {
         id: id_
       })
         .then(function (response) {
