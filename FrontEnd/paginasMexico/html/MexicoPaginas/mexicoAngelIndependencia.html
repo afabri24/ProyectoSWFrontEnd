@@ -172,13 +172,14 @@
   </footer>
 
   <script>
-    var bMostrar = document.getElementById("crear");
+    var bmostrar=document.getElementById("mostarDatos");
 
-    bMostrar.addEventListener("click", function () {
+    // bMostrar.addEventListener("click", function () {
+      bmostrar.addEventListener("click", function () {
       let id_ = 1;
       console.log(id_);
-      axios.post("https://proyectoswbackend-production.up.railway.app/datos", {
-
+      // axios.post("https://proyectoswbackend-production.up.railway.app/datos", {
+      axios.post("http://localhost:4567/datos", {
         id: id_
       })
         .then(function (response) {
